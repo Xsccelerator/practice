@@ -64,6 +64,9 @@ $.modal = function(options){
             setTimeout(()=>{                    //По таймауту этот класс удалится
                 $modal.classList.remove('hide') //За это время анимация успеет отработать
                 closing = false                 //снова меняем флаг, что означает ("Не в процессе закрытия")
+            if(typeof options.onClose === 'function'){  //Проверяем является ли onClose функцией. т.е. есть ли он вообще
+                options.onClose()
+            }
             }, ANIMATION_SPEED)                 //В данной константе лежит время анимации по умолчанию
         },
 
